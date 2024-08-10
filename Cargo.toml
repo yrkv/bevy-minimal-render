@@ -1,0 +1,32 @@
+[package]
+name = "bevy-render-graph"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+bevy = { version = "0.14", features = [
+  "dynamic_linking",
+  "wayland",
+] }
+#bevy = { version = "0.14", default-features = false, features = ["bevy_asset", "bevy_audio", "bevy_render", "bevy_ui", "bevy_winit", "default_font", "webgl2", "wayland", "bevy_core_pipeline", "dynamic_linking"] }
+#bevy = { version = "0.14", default-features = false, features = ["bevy_asset", "bevy_audio", "bevy_ui", "bevy_winit", "default_font", "webgl2", "wayland" ] }
+#bevy = { version = "0.14", default-features = false, features = [ "bevy_render", "bevy_asset", "bevy_winit", "wayland", "bevy_ui" ] }
+
+#wgpu = { version = "0.20", default-features = false, features = [
+#  "wgsl",
+#  "dx12",
+#  "metal",
+#  "naga",
+#  "naga-ir",
+#  "fragile-send-sync-non-atomic-wasm",
+#] }
+
+# fully optimize dependencies
+[profile.dev.package."*"]
+opt-level = 3
+
+# partially optimize self
+[profile.dev]
+opt-level = 1
+
